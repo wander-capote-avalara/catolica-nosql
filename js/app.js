@@ -239,5 +239,5 @@ app.constant('brandList', [{ id: 1, name: 'Volkswagen' }, { id: 2, name: 'Nissan
 
 		$locationProvider.html5Mode(true);
 
-		// $routeProvider.otherwise('/vehicles');
+		$routeProvider.otherwise('/vehicles');
 	});
