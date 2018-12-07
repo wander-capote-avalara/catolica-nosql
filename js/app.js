@@ -42,7 +42,7 @@ app.constant('brandList', [{ id: 1, name: 'Volkswagen' }, { id: 2, name: 'Nissan
 			getAll: function (callback) {
 				resetError();
 				// chamada GET para a API
-				return $http.get($window.API_URL + '/vehicles').then(function (data) {
+				return $http.get($window.API_URL + '/api/vehicles').then(function (data) {
 					return callback(null, data.data);
 				}).catch(function (err) {
 					return handleError(err, callback);
@@ -53,7 +53,7 @@ app.constant('brandList', [{ id: 1, name: 'Volkswagen' }, { id: 2, name: 'Nissan
 			create: function (params, callback) {
 				resetError();
 				// chamada POST para API
-				return $http.post($window.API_URL + '/vehicles', params).then(function (data) {
+				return $http.post($window.API_URL + '/api/vehicles', params).then(function (data) {
 					return callback(null, data.data);
 				}).catch(function (err) {
 					return handleError(err, callback);
@@ -64,7 +64,7 @@ app.constant('brandList', [{ id: 1, name: 'Volkswagen' }, { id: 2, name: 'Nissan
 			getOne: function (id, callback) {
 				resetError();
 				// chamada GET para a API
-				return $http.get($window.API_URL + '/vehicles/' + id).then(function (data) {
+				return $http.get($window.API_URL + '/api/vehicles/' + id).then(function (data) {
 					return callback(null, data.data);
 				}).catch(function (err) {
 					return handleError(err, callback);
@@ -75,7 +75,7 @@ app.constant('brandList', [{ id: 1, name: 'Volkswagen' }, { id: 2, name: 'Nissan
 			update: function (id, params, callback) {
 				resetError();
 				// chamada PUT para a API
-				return $http.put($window.API_URL + '/vehicles/' + id, params).then(function (data) {
+				return $http.put($window.API_URL + '/api/vehicles/' + id, params).then(function (data) {
 					return callback(null, data.data);
 				}).catch(function (err) {
 					return handleError(err, callback);
@@ -86,7 +86,7 @@ app.constant('brandList', [{ id: 1, name: 'Volkswagen' }, { id: 2, name: 'Nissan
 			delete: function (id, callback) {
 				resetError();
 				// chamada DELETE para a API
-				return $http.delete($window.API_URL + '/vehicles/' + id).then(function (data) {
+				return $http.delete($window.API_URL + '/api/vehicles/' + id).then(function (data) {
 					return callback(null, data.data);
 				}).catch(function (err) {
 					return handleError(err, callback);
@@ -221,21 +221,23 @@ app.constant('brandList', [{ id: 1, name: 'Volkswagen' }, { id: 2, name: 'Nissan
 	.config(function ($routeProvider, $locationProvider) {
 		$routeProvider
 			.when('/vehicles', {
-				templateUrl: 'src/templates/vehicles/index.html',
+				templateUrl: 'templates/vehicles/index.html',
 				controller: 'VehicleIndexController'
 			})
 			.when('/vehicles/new', {
-				templateUrl: 'src/templates/vehicles/form.html',
+				templateUrl: 'templates/vehicles/form.html',
 				controller: 'VehicleNewController'
 			})
 			.when('/vehicles/:id/edit', {
-				templateUrl: 'src/templates/vehicles/form.html',
+				templateUrl: 'templates/vehicles/form.html',
 				controller: 'VehicleEditController'
 			})
 			.when('/vehicles/:id', {
-				templateUrl: 'src/templates/vehicles/form.html',
+				templateUrl: 'templates/vehicles/form.html',
 				controller: 'VehicleShowController'
 			});
 
-		$routeProvider.otherwise('/vehicles');
+		$locationProvider.html5Mode(true);
+
+		// $routeProvider.otherwise('/vehicles');
 	});
