@@ -33,4 +33,4 @@ app.get('*', function (req, res) {
 	res.sendFile('index.html', { root: __dirname + '/templates' })
 })
 
-app.listen(8000);
+app.listen(process.env.PORT || 8000);
