@@ -5,7 +5,7 @@ var express = require('express'),
 	bodyParser = require('body-parser');
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/dbit');
+mongoose.connect('mongodb://capote:capote123@ds127954.mlab.com:27954/catolica-nosql');
 
 app.use(bodyParser.urlencoded({
 	extended: true
